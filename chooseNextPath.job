@@ -1,0 +1,15 @@
+#BSUB -J chooseNextPath
+#BSUB -L /bin/bash
+#BSUB -W 1:00
+#BSUB -n 20
+#BSUB -R "span[ptile=20]"
+#BSUB -R "rusage[mem=1024]"
+#BSUB -M 1024
+#BSUB -u archit97sharma@gmail.com
+#BSUB -B -N
+##
+
+module load intel
+module load geopy
+module load matplotlib/1.5.1-intel-2016a-Python-2.7.11
+python Find_A_Path.py 7_305

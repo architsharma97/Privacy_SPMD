@@ -1,0 +1,342 @@
+Breaking April 2013 File into Path Segments
+219990043384
+10999502169
+Traceback (most recent call last):
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 164, in <module>
+    main()
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 156, in main
+    process_list[i].join()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 145, in join
+Process Process-14:
+Process Process-15:
+Process Process-19:
+Process Process-8:
+Process Process-6:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Process Process-11:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Process Process-10:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+Process Process-5:
+Traceback (most recent call last):
+Process Process-9:
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+Process Process-18:
+Traceback (most recent call last):
+    res = self._popen.wait(timeout)
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+Process Process-17:
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+Process Process-4:
+Traceback (most recent call last):
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+    self.run()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 261, in _bootstrap
+    self._target(*self._args, **self._kwargs)
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+Process Process-13:
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+Process Process-20:
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+    self._target(*self._args, **self._kwargs)
+Process Process-7:
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+Process Process-12:
+Traceback (most recent call last):
+    self.run()
+    self.run()
+    self._target(*self._args, **self._kwargs)
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+Process Process-16:
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 318, in __init__
+    self._target(*self._args, **self._kwargs)
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self._target(*self._args, **self._kwargs)
+    self.run()
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 123, in break_into_paths
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 90, in break_into_paths
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self.run()
+    self.run()
+    self._target(*self._args, **self._kwargs)
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+    self._target(*self._args, **self._kwargs)
+    self._target(*self._args, **self._kwargs)
+    path_file.close()
+    if not chunk_num==PROCESSES-1:
+    self.run()
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+KeyboardInterrupt
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+KeyboardInterrupt
+    self.run()
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+    self._target(*self._args, **self._kwargs)
+    self.run()
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+KeyboardInterrupt
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+Seeking in process #12
+Synchronizing process #12
+Opening start and end files for Process #12
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+    self._target(*self._args, **self._kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+    self.run()
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+    self.run()
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+    self.run()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self.run()
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+    util._exit_function()
+    self._target(*self._args, **self._kwargs)
+    self._target(*self._args, **self._kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+    def __init__(self, *args, **kwargs):
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/util.py", line 303, in _exit_function
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+    self._target(*self._args, **self._kwargs)
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 120, in break_into_paths
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+Process Process-2:
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+    if not (ID==ID_prev and time-time_prev>=0 and time-time_prev<=time_diff and vincenty((Lat,Long),(Lat_prev,Long_prev)).m<=max_dist):
+    super(vincenty, self).__init__(*args, **kwargs)
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 322, in __init__
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 117, in __init__
+    super(vincenty, self).__init__(*args, **kwargs)
+    kilometers += units.kilometers(**kwargs)
+      File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 117, in __init__
+return self.poll(0)
+Process Process-3:
+    kilometers += units.kilometers(**kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/units.py", line 56, in kilometers
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+    def kilometers(meters=0, miles=0, feet=0, nautical=0): # pylint: disable=W0621
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 261, in _bootstrap
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+Seeking in process #9
+Synchronizing process #9
+Opening start and end files for Process #9
+    info('process shutting down')
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/util.py", line 76, in info
+    def info(msg, *args):
+Seeking in process #8
+Synchronizing process #8
+Opening start and end files for Process #8
+    super(vincenty, self).__init__(*args, **kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 115, in __init__
+    kilometers += self.measure(a, b)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 342, in measure
+    a, b = Point(a), Point(b)
+  File "build/bdist.linux-x86_64/egg/geopy/point.py", line 129, in __new__
+KeyboardInterrupt
+    return cls.from_sequence(seq)
+  File "build/bdist.linux-x86_64/egg/geopy/point.py", line 353, in from_sequence
+    return cls(*args)
+KeyboardInterrupt
+Seeking in process #4
+Synchronizing process #4
+Opening start and end files for Process #4
+    super(vincenty, self).__init__(*args, **kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 114, in __init__
+    for a, b in util.pairwise(args):
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+Seeking in process #11
+Synchronizing process #11
+Opening start and end files for Process #11
+    util._exit_function()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/util.py", line 294, in _exit_function
+    super(vincenty, self).__init__(*args, **kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 115, in __init__
+    kilometers += self.measure(a, b)
+KeyboardInterrupt
+    def _exit_function(info=info, debug=debug, _run_finalizers=_run_finalizers,
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 344, in measure
+    self.run()
+    lat2, lng2 = radians(degrees=b.latitude), radians(degrees=b.longitude)
+  File "build/bdist.linux-x86_64/egg/geopy/units.py", line 23, in radians
+KeyboardInterrupt
+    super(vincenty, self).__init__(*args, **kwargs)
+Seeking in process #2
+Synchronizing process #2
+Opening start and end files for Process #2
+    def radians(degrees=0, arcminutes=0, arcseconds=0): # pylint: disable=W0621
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 118, in __init__
+    self.__kilometers = kilometers
+KeyboardInterrupt
+Seeking in process #3
+Synchronizing process #3
+Opening start and end files for Process #3
+KeyboardInterrupt
+KeyboardInterrupt
+    super(vincenty, self).__init__(*args, **kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 115, in __init__
+    kilometers += self.measure(a, b)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 343, in measure
+    lat1, lng1 = radians(degrees=a.latitude), radians(degrees=a.longitude)
+  File "build/bdist.linux-x86_64/egg/geopy/units.py", line 31, in radians
+    return math.radians(degrees)
+Seeking in process #5
+Synchronizing process #5
+Opening start and end files for Process #5
+Seeking in process #6
+Synchronizing process #6
+Opening start and end files for Process #6
+KeyboardInterrupt
+Seeking in process #14
+Synchronizing process #14
+Opening start and end files for Process #14
+    super(vincenty, self).__init__(*args, **kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 115, in __init__
+    kilometers += self.measure(a, b)
+    super(vincenty, self).__init__(*args, **kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 346, in measure
+    super(vincenty, self).__init__(*args, **kwargs)
+    if isinstance(self.ELLIPSOID, string_compare):
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 115, in __init__
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 115, in __init__
+    kilometers += self.measure(a, b)
+    super(vincenty, self).__init__(*args, **kwargs)
+    kilometers += self.measure(a, b)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 342, in measure
+KeyboardInterrupt
+    super(vincenty, self).__init__(*args, **kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 342, in measure
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 117, in __init__
+    a, b = Point(a), Point(b)
+    kilometers += units.kilometers(**kwargs)
+  File "build/bdist.linux-x86_64/egg/geopy/point.py", line 113, in __new__
+    a, b = Point(a), Point(b)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 115, in __init__
+  File "build/bdist.linux-x86_64/egg/geopy/point.py", line 129, in __new__
+KeyboardInterrupt
+    kilometers += self.measure(a, b)
+  File "build/bdist.linux-x86_64/egg/geopy/distance.py", line 342, in measure
+    a, b = Point(a), Point(b)
+  File "build/bdist.linux-x86_64/egg/geopy/point.py", line 129, in __new__
+Seeking in process #18
+Synchronizing process #18
+Opening start and end files for Process #18
+Seeking in process #7
+Synchronizing process #7
+Opening start and end files for Process #7
+    if single_arg and not isinstance(latitude, util.NUMBER_TYPES):
+    return cls.from_sequence(seq)
+  File "build/bdist.linux-x86_64/egg/geopy/point.py", line 352, in from_sequence
+    args = tuple(islice(seq, 4))
+KeyboardInterrupt
+    return cls.from_sequence(seq)
+KeyboardInterrupt
+  File "build/bdist.linux-x86_64/egg/geopy/point.py", line 353, in from_sequence
+    return cls(*args)
+KeyboardInterrupt
+Seeking in process #15
+Synchronizing process #15
+Opening start and end files for Process #15
+Seeking in process #13
+Synchronizing process #13
+Opening start and end files for Process #13
+Seeking in process #16
+Synchronizing process #16
+Opening start and end files for Process #16
+Seeking in process #17
+Synchronizing process #17
+Opening start and end files for Process #17
+Seeking in process #19
+Synchronizing process #19
+Opening start and end files for Process #19
+Seeking in process #20
+Synchronizing process #20
+Opening start and end files for Process #20
+Seeking in process #10
+Synchronizing process #10
+Opening start and end files for Process #10
+Process Process-1:
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+KeyboardInterrupt
+Seeking in process #1
+Synchronizing process #1
+Opening start and end files for Process #1
+Done Breaking April 2013 File
+Breaking October 2013 File into Path Segments
+98697081970
+4934854098
+Process Process-15:
+Traceback (most recent call last):
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 121, in break_into_paths
+    end_file.write(str(chunk_num+1)+','+str(file_num)+','+prev_line)
+UnboundLocalError: local variable 'prev_line' referenced before assignment
+Seeking in process #15
+Synchronizing process #15
+Opening start and end files for Process #15
+Terminated

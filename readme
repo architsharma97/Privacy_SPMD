@@ -1,0 +1,108 @@
+Author: Archit Sharma
+Disclaimer: I do not how to write log files. If you follow up and you know this is not how it is supposed to be done, I apologize.
+
+This is a log file for all the scripts I have written to make the life easier for everybody who is going to follow up on this. I tried figuring out the work done before me, but it was difficult and I decided to start from a scratch. You can refer to that work in /home/vamsee/Connected-Vehicles.
+
+Directory I created /home/vamsee/new
+I started writing this log file a bit later than I actually started working on this. So, the timeline is a bit fuzzy in the beginning. Apologies.
+
+The dataset that is being used lies in /home/Transportation-Data/Data
+About the dataset: 2700 cars moving in Ann harbor, Michigan. All cars log their location data with a frequency of 10 Hz. Refer to SPMD Manual(s) in /home/vamsee/Connected-Vehicles
+
+I am mostly concerned with the following 2 files.
+april_BsmP1.csv: Comma separated value. The file has data from 2700 cars for the month of Arpil. This includes the BSM messages that are broadcasted and self received. Refer to SPMD Manual(s)
+
+April9_2013.txt: This is a preprocessed file, extracted from the original dataset of april_bsmP1.csv. A smaller file to test the scripts on. Data from the 2700 cars for the day of April 9, 2013. The data is semi-sorted. For every car ID, the data is sorted in time. However, the car IDs are not sorted.
+
+Task: Plot Traffic Pattern for every 30 minutes for April 9, 2013
+
+Split_30_Minutes.py: Reads the dataset. Time is not easily convertible to an actualy readable time of the day (Haven't figured it out till yet). So, I first found the smallest time entry. Then, I created 48 Files (I still hadn't verified that the data in this file would correspond to 1 day or to April 9 for that matter). Now, using trivial mathematics, I started writing to the appropriate files. File format:
+
+latitude,longitude
+........,.........
+.
+.
+.
+.
+.
+.
+
+
+
+Luckily, no extra files were created while the script ran, verifying the assumption that the data corresponded to 1 day only.
+  
+The files can be found in /TrafficFlow.
+
+Map.html/PlotOnMap.js: Using the utility, the script takes up a csv file and plots it on a map online. However, the dataset is way to large, even if we consider 30 miuntes of the day. Please proceed at your own risk with this. Firefox almost always hangs up with this script in the background. (Figured out the reason. The token associated with this is for free use. Free use imposes restriction on number of markers that can be plotted in a second, 600/second. Too slow for our purpose)
+
+*Skipped the idea of plotting for 30 minutes*
+*Implementing the plotting of ID Routes*
+
+Note: Car ID may be switching with certain frequency (Supposed to be 20 Minutes). So even though IDs have a lot of data. They might not correspond to just 1 car. But, if they dont correspond to 1 car. There should be discontinuities in the map when their car routes are plotted.
+
+Task: Split into files by car ID.
+
+Split_car_wise.py: Took the April 9 Data, split it into files of data pertaining to 1 ID. The car ID was used as the name for the resulting csv itself. Only 4 field were extracted from the April 9 (Realized might be better to just extract the relevant data) File Format:
+
+time,latitude,longitude,speed
+....,........,.........,.....
+.
+.
+.
+.
+
+Files can be found in /CarWise. Even though the number of cars is 2700, the IDs run into 17000s, which supports the idea for ID Switching.
+
+Task: Plot the car routes on the map
+
+Since, using the mapbox was not a viable option, it was decided the plotting would be done manually using the local machine. 
+
+max_min_positions.py: I thought it would be worthwhile to know the extremums of latitudes and longitudes. The script does the same and outputs the results in console itself. Later, this activity turned out to be futile, as extremums did not lie in the Ann Harbor. Data was found in the nearby states as well. 
+
+Note: There is some faulty data present in this dataset, unless Ann Harbor extend all the way to South Pole. And it is not just 1 point, there are multiple points with latitude of nearly -90 degrees
+
+Plot_Car_Route.py/final_img.png: This one is interesting. So the idea was to plot manually. So first extracted an image on Ann Harbor from Google My Maps. It was important to have the (Latitude, Longitude) of the corners. (The corners were decided first, then, the screenshot was taken accordingly). The image is high resolution (from a Mac).
+
+Downloaded numpy, matplotlib for this task.
+
+Note: For this script, origin refers to the lower left corner and end refers to the top right corner. If changing the image, make sure to the change these as well.
+
+After exploring matplotlib, I found that the scales were automatically adjusted according to the number of pixels of the image (and hence the need for a high res image). So, my first attempt, to convert latitudes and longitudes to actual distances was futile and remain commented in the file. 
+
+The current image is 2416 X 1678. 
+
+Note: matplotlib has weird axes. X-axis runs from 0 to 2416, but, y-axis runs from 1678 to 0. So had to adjust the formulas according to that.
+Now I assumed, a linear transformation for our case. (Approximately, because Ann harbor is so small).
+
+x=2416/(end_long-origin_long)*(pt_long-origin_long)
+y=1678/(origin_lat-end_lat)*(pt_lat-end_lat)
+
+Legend:
+origin_lat: Latitude of origin (Similarly for for end_long, origin_long, end_lat)
+pt_lat=Latitude of the point to be transformed
+pt_long=Longitude of the point to be transformed
+(x,y)= tuple corresponding to the location on the map
+
+Note: The point in the csv file corresponding to the car were filtered out, so that they lied in between the extremums. We are working maually with screenshot of Ann harbor, and hence, this is highly important, otherwise, plot would look funny.
+
+The plots are saved with ID. They are saved in the CarWise folder itself. 
+
+When running the script, pass car ID(s).
+
+Additional utility: Plot multiple car routes on the same map. Comment lines 45 and 46. Uncomment 47 (48 Optionally for saving this plot). Make sure to restore the original file.
+
+*Update to the task: Make the Car routes split by trips*
+Plot_ID_Trips.py: The code is very similar to the one in Plot_Car_Routes. But, to have a clear visualization of car trips, paths were plotted in the manner so that every trip can be identified separately.
+
+Trip: Consecutive set of tags for the same ID (at 10 Hz). i.e. As long as a tag is found within 0.11 seconds of the previous tag,it is a part of the same trip.
+
+Same plotting techniques are used and the code is modular in the same way. Just pass the IDs to the script and it will generate the trips. File name example: /home/vamsee/new/CarWise/15_trips.png
+
+Each trip has been colored separately. I think it follows the 4 Color Policy. 
+
+**NOTE: The results from this script has forced the conclusion that the car IDs are actually switching because of the discontinuities which were not seen before. In the previous script, matplotlib would just join any two discontinuous points, which gave the impression that the ID was not switching. However, this script has made it clear that there are multiple cars moving with the same ID (at different times, ofcourse).
+
+*Addition: Added Utility to print time of each trip into console (in mins)
+
+Task: Retrace the routes of carsusing the ids for reconstructing paths
+

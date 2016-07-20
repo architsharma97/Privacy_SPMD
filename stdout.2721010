@@ -1,0 +1,22 @@
+Breaking April 2013 File into Path Segments
+219990043384
+10999502169
+Traceback (most recent call last):
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 153, in <module>
+    main()
+  File "./Break_Into_Path_Segment_Multiprocessing.py", line 145, in main
+    files_counts=pool.map(break_into_paths, range(PROCESSES))
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/pool.py", line 251, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/software/easybuild/software/Python/2.7.10-intel-2015B/lib/python2.7/multiprocessing/pool.py", line 567, in get
+    raise self._value
+MemoryError
+Seeking in process #6
+Synchronizing process #6
+Done Breaking April 2013 File
+Breaking October 2013 File into Path Segments
+98697081970
+4934854098
+./Dataset_To_Paths.sh: line 22: 13496 Bus error               (core dumped) python ./Break_Into_Path_Segment_Multiprocessing.py $file_october_2012 $time_diff $max_dist october 2012
+Done Breaking October 2012
+Script DONE
