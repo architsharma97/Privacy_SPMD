@@ -101,9 +101,14 @@ def main():
 	print 'Number of distinct finishes '+str(count_finish)
 
 	correct_joins=0
+	
+	# if the file number does not match
 	false_joins_1=0
+	#if the file number matches, however, the the connection is wrong
 	false_joins_2=0
+	
 	not_joined=0
+
 	for i in range(len(segments)):
 		if segments[i].next != -1:
 			if int(segments[i].start[0])==int(segments[segments[i].next].start[0]) and int(segments[i].start[1])==int(segments[segments[i].next].start[1]):
