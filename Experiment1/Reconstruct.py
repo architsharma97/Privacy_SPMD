@@ -101,17 +101,27 @@ def main():
 	print 'Number of distinct finishes '+str(count_finish)
 
 	correct_joins=0
-	false_joins=0
+	false_joins_1=0
+	false_joins_2=0
+	not_joined=0
 	for i in range(len(segments)):
 		if segments[i].next != -1:
 			if int(segments[i].start[0])==int(segments[segments[i].next].start[0]) and int(segments[i].start[1])==int(segments[segments[i].next].start[1]):
-				correct_joins+=1
+				print str(i)+': '+segments[i].end[7]+' '+segments[segments[i].next].start[7]
+				if (int(segments[i].end[7])+1)%128==int(segments[segments[i].next].start[7]):
+					correct_joins+=1
+				else:
+					false_joins_2+=1
 			else:
-				false_joins+=1
+				false_joins_1+=1
+		else:
+			not_joined+=1
 
 	print 'Correct connections: '+str(correct_joins)
-	print 'False connections: '+str(false_joins) 
-	print 'Unmade connections: '+str(len(segments)-10000-correct_joins-false_joins)
+	print 'False connections: '+str(false_joins_1+false_joins_2)
+	print 'False connection but right file: '+str(false_joins_2)
+	print 'Not joined: '+str(not_joined)
+	print 'Unmade connections: '+str(len(segments)-10000-correct_joins-false_joins_1-false_joins_2)
 
 if __name__ == '__main__':
 	main()
