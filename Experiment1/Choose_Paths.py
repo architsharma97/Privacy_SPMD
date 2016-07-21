@@ -11,7 +11,7 @@ __author__= 'architsh'
 from random import randint,shuffle
 import sys
 
-#number of processes used is standard=20 
+#number of processes used (Dont change if you do not what you are doing)
 PROCESSES=20
 
 def main():
