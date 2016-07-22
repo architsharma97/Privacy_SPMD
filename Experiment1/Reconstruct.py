@@ -128,5 +128,8 @@ def main():
 	print 'Not joined: '+str(not_joined)
 	print 'Unmade connections: '+str(len(segments)-10000-correct_joins-false_joins_1-false_joins_2)
 
+	#success is measured as the number of edges made correctly (or not made at all)
+	print 'Success rate: '+str(float(correct_joins+10000)/len(start_data)*100)
+
 if __name__ == '__main__':
 	main()

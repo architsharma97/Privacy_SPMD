@@ -10,6 +10,7 @@ import os
 #Argument #3: Maximum distance
 #Argument #4: Month of Dataset
 #Argument #5: Year of Dataset
+#Argument #6: Directory where new files should be written
 
 PROCESSES=20
 FILE_SIZE=os.path.getsize(sys.argv[1])
@@ -62,11 +63,8 @@ def break_into_paths(chunk_num, q):
 	
 	file_num=1
 
-	if sys.argv[4]=='april':
-		paths_dir='/scratch/user/architsh/PathSegmentsApril2013/'
-	else:
-		paths_dir='/scratch/user/architsh/PathSegmentsOctober2012/'
-	
+	paths_dir=sys.argv[6]
+
 	#print 'Opening path segment file:'+str(chunk_num+1)+'_'+str(file_num)
 	path_file=open(paths_dir+str(chunk_num+1)+'_'+str(file_num)+'.txt','a')
 	

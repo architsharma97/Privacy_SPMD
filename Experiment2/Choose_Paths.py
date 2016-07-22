@@ -6,7 +6,7 @@ __author__= 'architsh'
 #Argument 1: Number of paths to be broken down.
 #Argument 2: File containing information about number of files from each process
 #Argument 3: Directory where are all new files will be made
-#Argument 4: Directory which containes city path's information
+#Argument 4: Directory which contains city path's information
 
 from random import randint,shuffle
 import sys
