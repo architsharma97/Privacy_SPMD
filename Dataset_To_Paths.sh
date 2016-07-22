@@ -12,8 +12,8 @@ time_diff=5
 max_dist=100
 
 #directories where files will be stored
-directory_april_2013=/scratch/group/sshakkot/PathSegmentsApril2013
-directory_october_2012=/scratch/group/sshakkot/PathSegmentsOctober2012
+directory_april_2013=/scratch/group/sshakkot/PathSegmentsApril2013/
+directory_october_2012=/scratch/group/sshakkot/PathSegmentsOctober2012/
 
 echo 'Breaking April 2013 File into Path Segments'
 python ./Break_Into_Path_Segment_Multiprocessing.py $file_april_2013 $time_diff $max_dist april 2013 $directory_april_2013
