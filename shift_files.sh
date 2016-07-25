@@ -6,7 +6,7 @@ file_1=$ref_dir'10.txt'
 file_2=$ref_dir'11.txt'
 file_3=$ref_dir'12.txt'
 
-final_dir='/scratch/user/architsh/Anand/'
+final_dir='/scratch/user/architsh/subset/'
 
 # test_file='legitimate_path_list_500.txt'
 
