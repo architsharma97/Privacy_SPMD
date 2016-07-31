@@ -1,7 +1,6 @@
 __author__='architsh'
 
 import sys
-from random import shuffle
 from geopy.distance import vincenty
 
 #Argument 1: Start Data
@@ -137,7 +136,7 @@ def main():
 					false_joins_1+=1
 		else:
 			not_joined+=1
-			
+
 	print 'Segments created: ' + str(len(start_data))
 	print 'Total connections made: '+str(total_edges)
 	print 'Correct connections: '+str(correct_joins)
