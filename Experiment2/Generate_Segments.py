@@ -19,9 +19,9 @@ def main():
 	end_count=0
 	
 	for path_name in path_list:
-		#comment the next few lines for the whole thing to function for the complete set of paths
-		if not (path_name[:2]==str(10) or path_name[:2]==str(11) or path_name[:2]==str(12)):
-			continue
+		#comment the next couple of lines for the whole thing to function for the complete set of paths
+		# if not (path_name[:2]==str(10) or path_name[:2]==str(11) or path_name[:2]==str(12)):
+		# 	continue
 		
 		path_count+=1
 		# print 'Found a path'
