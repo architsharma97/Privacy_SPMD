@@ -23,7 +23,7 @@ def search(idx):
 
 	for i in range(start_idx, end_idx+1):
 		if abs(segments[idx].endTime-segments[i].startTime)<=1 and vincenty((segments[i].startLat,segments[i].startLong),(segments[idx].endLat,segments[idx].endLong)).m<=20:
-			print 'Found for '+str(idx)
+			# print 'Found for '+str(idx)
 			segments[idx].next.append(i)
 			segments[i].prev.append(idx)
 			segments[i].start=False
@@ -83,28 +83,52 @@ def main():
 
 	for i in range(len(segments)):
 		search(i)
+		next_id=-1
+		min_score=1000000000000
+		if len(segments[i].next):
+			for nxt in segments[i].next:
+				#the best fit choice should be 0.1 second apart and 20*0.1 metre away. All other segments should be penalized
+				#RMS error is being used to penalize, which is scaled appropriately to make it dimensionless
+				score=(vincenty((segments[nxt].startLat,segments[nxt].startLong),(segments[i].endLat,segments[i].endLong)).m/2)**2
+				score+=((segments[nxt].startTime-segments[i].endTime)/0.1)**2
+				#for better error calculations, add score related to velocity and and heading
+				if score < min_score:
+					min_score=score
+					next_id=nxt
+		
+		segments[i].next=next_id
 
 	correct_joins=0
 	not_joined=0
 	false_joins=0
 	sum_choices=0
-	for i in range(len(segments)):
-		flag=False
-		sum_choices+=len(segments[i].next)
-		for nxt in segments[i].next:
-			if segments[nxt].process==segments[i].process and segments[nxt].id==segments[i].id and (segments[i].endMessage+1)%128==segments[nxt].startMessage:
-				flag=True
+	# for i in range(len(segments)):
+	# 	flag=False
+	# 	sum_choices+=len(segments[i].next)
+	# 	for nxt in segments[i].next:
+	# 		if segments[nxt].process==segments[i].process and segments[nxt].id==segments[i].id and (segments[i].endMessage+1)%128==segments[nxt].startMessage:
+	# 			flag=True
 
-		if len(segments[i].next)==0:
-			not_joined+=1
-		elif flag:
-			correct_joins+=1
+	# 	if len(segments[i].next)==0:
+	# 		not_joined+=1
+	# 	elif flag:
+	# 		correct_joins+=1
+	# 	else:
+	# 		false_joins+=1
+
+	for i in range(len(segments)):
+		if segments[i].next!=-1:
+			if segments[i].process==segments[segments[i].next].process and segments[i].id==segments[segments[i].next].id and (segments[i].endMessage+1)%128==segments[segments[i].next].startMessage:
+				correct_joins+=1
+			else:
+				false_joins+=1
 		else:
-			false_joins+=1
-	print 'Average choice: '+str(float(sum_choices)/len(segments))
+			not_joined+=1
+	# print 'Average choice: '+str(float(sum_choices)/len(segments))
 	print 'Correct joins: '+str(correct_joins)
 	print 'False joins: '+str(false_joins)
 	print 'Not joined: '+str(not_joined)
+	print 'Success rate: '+str(100.0-float(false_joins)/len(segments))+'%'
 
 if __name__ == '__main__':
 	main()
