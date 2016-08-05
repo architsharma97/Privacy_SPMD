@@ -17,7 +17,9 @@ PROCESSES=20
 def main():
 	global PROCESSES
 	
-	process_list=[num for num in range(1,PROCESSES+1)]
+	#to use all the processes, comment the next line and uncomment the next one
+	process_list=[num for num in range(10,13)]
+	# process_list=[num for num in range(1,PROCESSES+1)]
 	shuffle(process_list)
 	
 	total_paths=int(sys.argv[1])
