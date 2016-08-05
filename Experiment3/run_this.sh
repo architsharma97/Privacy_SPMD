@@ -1,1 +1,1 @@
-python ./Paths_For_Intersections.py ../CityPaths/April2013/ ../ann_arbor_intersections_coordinates.txt ./PathAllocation/ /scratch/group/sshakkot/PathSegmentsApril2013
+python ./Paths_For_Intersections.py ../CityPaths/April2013/ ../ann_arbor_intersections_coordinates.txt ./PathAllocation/ /scratch/group/sshakkot/PathSegmentsApril2013/
