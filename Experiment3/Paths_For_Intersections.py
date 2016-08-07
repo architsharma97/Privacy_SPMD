@@ -13,7 +13,7 @@ from geopy.distance import vincenty
 #keep it fixed, unless number of processes used to generate path segments from the main dataset is different
 PROCESSES=20
 
-intersections=[ [float(f) for f in line.split(',')] for line in open(sys.argv[2],'r').read().splitlines()[:1]]
+intersections=[ [float(f) for f in line.split(',')] for line in open(sys.argv[2],'r').read().splitlines()[:]]
 
 path_by_intersection=Queue()
 
