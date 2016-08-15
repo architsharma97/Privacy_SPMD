@@ -55,9 +55,10 @@ def get_intersections(osm, input_type='file'):
     return intersection_coordinates
 
 def main():
-	intersections=get_intersections('./ann_arbor.osm')
+	intersections=get_intersections('./ann_arbor_v2.osm')
+    
 	# print intersections
-	intersections_file=open('./ann_arbor_intersections_coordinates.txt','a')
+	intersections_file=open('./ann_arbor_v2_intersections_coordinates.txt','a')
 	for entry in intersections:
 		intersections_file.write(entry+'\n')
 	intersections_file.close()
