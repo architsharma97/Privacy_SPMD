@@ -1,0 +1,15 @@
+#BSUB -J breakIntoPaths
+#BSUB -L /bin/bash
+#BSUB -W 10:00
+#BSUB -n 20
+#BSUB -R "span[ptile=20]"
+#BSUB -R "rusage[mem=1024]"
+#BSUB -M 1024
+#BSUB -o stdout.%J
+#BSUB -u archit97sharma@gmail.com
+#BSUB -B -N
+##
+
+module load intel
+module load geopy
+./Dataset_To_Paths.sh
