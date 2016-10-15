@@ -1,4 +1,0 @@
-upper_bound:42.4952
-lower_bound:42.2662
-right_bound:-83.7230
-left_bound:-83.7630
