@@ -17,5 +17,5 @@ const long tBefore = 1; // min path time before intersection (minutes)
 const long tAfter = 1; // min path time after intersection (minutes)
 
 // matching weights
-constexpr double aHW = 1, aSW = 0, aXW = 0, aYW = 0, sHW = 1, sSW = 1, sXW = 1, sYW = 1;
+constexpr double aHW = 0, aSW = 2, aXW = 0, aYW = 0, sHW = 0, sSW = 4, sXW = 0, sYW = 4;
 constexpr double W = (aHW + aSW + aXW + aYW + sHW + sSW + sXW + sYW);
