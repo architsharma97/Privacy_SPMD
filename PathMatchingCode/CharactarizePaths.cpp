@@ -1,6 +1,7 @@
 // Mason Rumuly
 // Updated: 8 October 2016
-#include "Traffic.h"
+#include "HungarianAlgorithm.h"
+#include "HungarianAlgorithm\munkres.h"
 // charactarize paths by time
 // Active Filters: No skipped messages
 
@@ -92,45 +93,70 @@ int main(int argc, char* argv[])
 	}
 
 	// trailing space
-	records << "\n\n\n\n\n"; 
-	cout << "\n\n\n\n\n";
+	records << "\n\n\n"; 
+	cout << "\n\n\n";
 
 	//----------------------------------------------------------------------------
-	// Matching algorithm
+	// Matching algorithm (using the Hungarian algorithm)
 	vector<unsigned int> matchtemp;
 	vector<double> strengthtemp;
 
-	// Greedy matching: find best match for each, regardless of whether it is taken
+
+	//**********************
+	Matrix<double> costmatrix(candidatesStart.size(), candidatesStart.size());
+
 	for (unsigned int i = 0; i < candidatesStart.size(); i++) {
 		matchtemp.push_back(0); strengthtemp.push_back(0);
 		for (unsigned int j = 0; j < candidatesEnd.size(); j++) {
-			if (pathMatch(candidatesStart[i], candidatesEnd[j]) > strengthtemp[i]) {
-				strengthtemp[i] = pathMatch(candidatesStart[i], candidatesEnd[j]); // save strength of match
-				matchtemp[i] = j; // save match index
-			}
+			costmatrix(i, j) = pathMisMatch(candidatesStart[i], candidatesEnd[j]);
 		}
 	}
 
-	// Output match results
-	bool success = false;
-	double successRate = 0;
-	for (unsigned int i = 0; i < matchtemp.size(); i++) {
-		success = ((candidatesStart[i].name.substr(0, candidatesStart[i].name.size() - 2)) ==
-			candidatesEnd[matchtemp[i]].name.substr(0, candidatesEnd[matchtemp[i]].name.size()-2));
-		successRate += success;
+	Munkres<double> m;
+	m.solve(costmatrix);
 
-		records << candidatesStart[i].name << ',' << candidatesEnd[matchtemp[i]].name << ',' <<
-			strengthtemp[i] << ',' << success << endl;
-		cout << candidatesStart[i].name << ',' << candidatesEnd[matchtemp[i]].name << ',' <<
-			strengthtemp[i] << ',' << success << endl;
+	for (unsigned int i = 0; i < candidatesStart.size(); i++) 
+		for (unsigned int j = 0; j < candidatesEnd.size(); j++)
+			if (costmatrix(i, j) == 0) {
+				matchtemp[i] = j;
+				strengthtemp[i] = pathMatch(candidatesStart[i], candidatesEnd[j]);
+			}
+	//**********************
+
+
+
+	
+
+	try {
+		//hungarian(candidatesStart, candidatesEnd, matchtemp, strengthtemp);
+
+
+		// Output match results
+		bool success = false;
+		double successRate = 0;
+		for (unsigned int i = 0; i < matchtemp.size(); i++) {
+			success = ((candidatesStart[i].name.substr(0, candidatesStart[i].name.size() - 2)) ==
+				candidatesEnd[matchtemp[i]].name.substr(0, candidatesEnd[matchtemp[i]].name.size() - 2));
+			successRate += success;
+
+			records << candidatesStart[i].name << ',' << candidatesEnd[matchtemp[i]].name << ',' <<
+				strengthtemp[i] << ',' << success << endl;
+			cout << candidatesStart[i].name << ',' << candidatesEnd[matchtemp[i]].name << ',' <<
+				strengthtemp[i] << ',' << success << endl;
+		}
+
+		successRate /= (1.0 * matchtemp.size());
+		records << '\n' << successRate << endl;
+		cout << '\n' << successRate << endl;
 	}
-
-	successRate /= (1.0 * matchtemp.size());
-	records << '\n' << successRate << endl;
-	cout << '\n' << successRate << endl;
+	catch (exception e) {
+		cerr << e.what();
+	}
+	catch (...) {
+		cerr << "SOMETHING WEIRD";
+	}
 
 
 	records.close(); // finish output file
-
-
+	keep_window_open();
 }

@@ -110,22 +110,27 @@ void pathFromPoints(const vector<PathPoint> &points, Path &path)
 
 // take percentage match
 double match(const double &q1, const double &q2) {
-	if (q1 / q2 <= 1)
-		return q1 / q2;
+	if (q1 / q2 <= 1 && q1/q2 >= -1)
+		return log(abs(q1 / q2));
 	else
-		return q2 / q1;
+		return log(abs(q2 / q1));
 }
 
 // Find percentage match between the two paths (additive over characteristics)
 double pathMatch(const Path &pathA, const Path &pathB) {
-	return (aHW * match(pathA.avgHeading, pathB.avgHeading) +
+	return pow(10,(aHW * match(pathA.avgHeading, pathB.avgHeading) +
 		aSW * match(pathA.avgSpeed, pathB.avgSpeed) +
 		aXW * match(pathA.avgAccx, pathB.avgAccx) +
 		aYW * match(pathA.avgAccy, pathB.avgAccy) +
 		sHW * match(pathA.stdHeading, pathB.stdHeading) +
 		sSW * match(pathA.stdSpeed, pathB.stdSpeed) +
 		sXW * match(pathA.stdAccx, pathB.stdAccx) +
-		sYW * match(pathA.stdAccy, pathB.stdAccy)) / W;
+		sYW * match(pathA.stdAccy, pathB.stdAccy)));
+}
+
+// Find percentage mismatch between two paths (for hungarian minimization
+double pathMisMatch(const Path &pathA, const Path &pathB) {
+	return (1 - pathMatch(pathA, pathB));
 }
 
 //----------------------------------------------------------------
