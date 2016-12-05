@@ -1,20 +1,20 @@
 __author__='architsh'
-#strong paths are defined as the paths which have at least x tags or lines,
-#x is provided by the user
+# strong paths are defined as the paths which have at least x tags or lines,
+# x is provided by the user
 
 import os
 import sys
 from multiprocessing import Process, Pool
 
-#Argument 1: Number of tags/lines after which the path segment would be considered strong
-#Argument 2: Directory in which the Path segments are present
-#Argument 3: File which contains the information about number of path segments and the processes responsible for creating the path segment
-#Argument 4: Directory in which the legit path information should be written
+# Argument 1: Number of tags/lines after which the path segment would be considered strong
+# Argument 2: Directory in which the Path segments are present
+# Argument 3: File which contains the information about number of path segments and the processes responsible for creating the path segment
+# Argument 4: Directory in which the legit path information should be written
 
-#Average size 
+# average size 
 size_of_line=144
 min_points=int(sys.argv[1])
-#Keep it same as the number of processes used to break down the original file
+# keep it same as the number of processes used to break down the original file
 PROCESSES=20
 
 def legit(process_num, num_files):
