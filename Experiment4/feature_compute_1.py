@@ -118,6 +118,7 @@ def main():
 	# FILE B commences here
 	# features to be computed
  	num_entries=len(file_B)
+ 	# print num_entries
  	mean_speed_B=0
  	# along the motion
  	mean_accx_B=0
@@ -128,7 +129,7 @@ def main():
  	# these paramaeters are computed for proximity to intersection (giving more importance to behaviour near intersection)
  	# how much time near intersection in section
  	time_near_B=60
- 	time_start=float(file_A[0].split(',')[5])/1000000-35
+ 	time_start=float(file_B[0].split(',')[5])/1000000-35
 
  	ni_mean_speed_B=0
  	ni_mean_accx_B=0
@@ -136,10 +137,10 @@ def main():
  	ni_mean_heading_B=0
  	ni_entries=0
 
- 	for i,entry in enumerate(file_B):
+ 	for entry in file_B:
  		entries=entry.split(',')
- 		if len(entries)<12:
- 			print i
+ 		if len(entries)==0:
+ 			break
  		mean_speed_B+=float(entries[12])
  		mean_heading_B+=float(entries[13])
  		mean_accx_B+=float(entries[14])
@@ -175,6 +176,8 @@ def main():
 
 	for entry in file_B:
  		entries=entry.split(',')
+ 		if len(entries)==0:
+ 			break
  		std_speed_B+=(mean_speed_B-float(entries[12]))**2
  		std_heading_B+=(mean_heading_B-float(entries[13]))**2
  		std_accx_B+=(mean_accx_B-float(entries[14]))**2
