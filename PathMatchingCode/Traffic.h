@@ -39,5 +39,9 @@ void parsePoint(stringstream &line, PathPoint &point);
 bool inIntersection(const double &rLat, const double &rLong, const Intersection &intersection);
 double GPSdist(const double &aLat, const double &aLong, const double &bLat, const double &bLong);
 void pathFromPoints(const vector<PathPoint> &points, Path &path);
-double pathMatch(const Path &pathA, const Path &pathB);
-double pathMisMatch(const Path &pathA, const Path &pathB);
+double pathMatch(const Path &pathA, const Path &pathB,
+	const float &aHW, const float &aSW, const float &aXW, const float &aYW,
+	const float &sHW, const float &sSW, const float &sXW, const float &sYW);
+double pathMisMatch(const Path &pathA, const Path &pathB,
+	const float &aHW, const float &aSW, const float &aXW, const float &aYW,
+	const float &sHW, const float &sSW, const float &sXW, const float &sYW);

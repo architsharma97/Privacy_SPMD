@@ -21,9 +21,6 @@
     <ClCompile Include="Traffic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HungarianAlgorithm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HungarianAlgorithm\munkres.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,9 +33,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TrafficSettings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HungarianAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HungarianAlgorithm\matrix.h">

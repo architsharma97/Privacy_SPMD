@@ -119,12 +119,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CharactarizePaths.cpp" />
-    <ClCompile Include="HungarianAlgorithm.cpp" />
     <ClCompile Include="HungarianAlgorithm\munkres.cpp" />
     <ClCompile Include="Traffic.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HungarianAlgorithm.h" />
     <ClInclude Include="HungarianAlgorithm\matrix.h" />
     <ClInclude Include="HungarianAlgorithm\munkres.h" />
     <ClInclude Include="std_lib_facilities_4.h" />
