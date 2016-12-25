@@ -12,16 +12,19 @@ struct Intersection {
 	};
 
 struct Path {
-	Path(): avgHeading(0), avgSpeed(0), avgAccx(0), avgAccy(0),
-		stdHeading(0), stdSpeed(0), stdAccx(0), stdAccy(0) {}
-	/*Path(): start(0), earlyI(0), lateI(0), end(0) {}
+	Path() {}
 
-	long start, earlyI, lateI, end; // store as microseconds*/
-	double avgHeading, avgSpeed, avgAccx, avgAccy,
-		stdHeading, stdSpeed, stdAccx, stdAccy;
+		/* List of attributes in order. Use vector for scalability
+		avgHeading, avgSpeed, avgAccx, avgAccy,
+		stdHeading, stdSpeed, stdAccx, stdAccy,
+		closeAvgHeading, closeAvgSpeed, closeAvgAccx, closeAvgAccy,
+		closeStdHeading, closestdSpeed, closeStdAccx, closeStdAccy*/
+	vector<double> attributes;
+
 	string name;
 
 	string comSepChar() const;
+	int attributeNumber() const;
 	};
 
 struct PathPoint {
@@ -38,10 +41,6 @@ void removeSections(stringstream &r, int const &numCommas);
 void parsePoint(stringstream &line, PathPoint &point);
 bool inIntersection(const double &rLat, const double &rLong, const Intersection &intersection);
 double GPSdist(const double &aLat, const double &aLong, const double &bLat, const double &bLong);
-void pathFromPoints(const vector<PathPoint> &points, Path &path);
-double pathMatch(const Path &pathA, const Path &pathB,
-	const float &aHW, const float &aSW, const float &aXW, const float &aYW,
-	const float &sHW, const float &sSW, const float &sXW, const float &sYW);
-double pathMisMatch(const Path &pathA, const Path &pathB,
-	const float &aHW, const float &aSW, const float &aXW, const float &aYW,
-	const float &sHW, const float &sSW, const float &sXW, const float &sYW);
+void pathFromPoints(const vector<PathPoint> &points, Path &path, const bool &before);
+double pathMatch(const Path &pathA, const Path &pathB, const vector<float> &weights);
+double pathMisMatch(const Path &pathA, const Path &pathB, const vector<float> &weights);

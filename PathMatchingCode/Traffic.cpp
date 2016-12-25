@@ -69,39 +69,95 @@ bool inIntersection(const double &rLat, const double &rLong, const Intersection 
 // output comma-separated text entry charactarization
 string Path::comSepChar() const
 {
-	return (name + ',' +
-		to_string(avgHeading) + ',' + to_string(stdHeading) + ',' +
-		to_string(avgSpeed) + ',' + to_string(stdSpeed) + ',' +
-		to_string(avgAccx) + ',' + to_string(stdAccx) + ',' +
-		to_string(avgAccy) + ',' + to_string(stdAccy));
+	stringstream l;
+	l << name;
+	// assemble string with attributes
+	for (unsigned int i = 0; i < attributes.size(); i++)
+		l << ',' << to_string(attributes[i]);
+
+	return l.str();
+}
+
+int Path::attributeNumber() const
+{
+	return attributes.size();
 }
 
 // get average and std for path from the set of points
-void pathFromPoints(const vector<PathPoint> &points, Path &path)
+void pathFromPoints(const vector<PathPoint> &points, Path &path, const bool &before) // indicate front or back! THEN add split portion
 {
-	// get averages
-	for (unsigned int i = 0; i < points.size() / 2; ++i) {
-		path.avgHeading += points[i].heading;
-		path.avgSpeed += points[i].speed;
-		path.avgAccx += points[i].ax;
-		path.avgAccy += points[i].ay;
-	}
-	path.avgHeading /= (points.size() / 2);
-	path.avgSpeed /= (points.size() / 2);
-	path.avgAccx /= (points.size() / 2);
-	path.avgAccy /= (points.size() / 2);
+		const unsigned int offset = 600; // length of excerpt
+		unsigned int mainStart, mainEnd, minuteStart, minuteEnd;
+		if (before) {
+			mainStart = 0;
+			mainEnd = points.size() - offset;
+			minuteStart = mainEnd;
+			minuteEnd = points.size();
+		}
+		else {
+			mainStart = offset;
+			mainEnd = points.size();
+			minuteStart = 0;
+			minuteEnd = mainStart;
+		}
 
-	// get std
-	for (unsigned int i = 0; i < points.size() / 2; ++i) {
-		path.stdHeading += pow((path.avgHeading - points[i].heading), 2);
-		path.stdSpeed += pow((path.avgSpeed - points[i].speed), 2);
-		path.stdAccx += pow((path.avgAccx - points[i].ax), 2);
-		path.stdAccy += pow((path.avgAccy - points[i].ay), 2);
+		try {
+		// initialize attribute list
+		for (unsigned int i = 0; i < 16; ++i)
+			path.attributes.push_back(0);
+
+		// get main averages
+		for (unsigned int i = mainStart; i < mainEnd; ++i) {
+			path.attributes[0] += points[i].heading;
+			path.attributes[1] += points[i].speed;
+			path.attributes[2] += points[i].ax;
+			path.attributes[3] += points[i].ay;
+		}
+		path.attributes[0] /= (points.size() - offset);
+		path.attributes[1] /= (points.size() - offset);
+		path.attributes[2] /= (points.size() - offset);
+		path.attributes[3] /= (points.size() - offset);
+
+		// get main standard deviations
+		for (unsigned int i = mainStart; i < mainEnd; ++i) {
+			path.attributes[4] += pow((path.attributes[0] - points[i].heading), 2);
+			path.attributes[5] += pow((path.attributes[1] - points[i].speed), 2);
+			path.attributes[6] += pow((path.attributes[2] - points[i].ax), 2);
+			path.attributes[7] += pow((path.attributes[3] - points[i].ay), 2);
+		}
+		path.attributes[4] = sqrt(path.attributes[4] / (points.size() - offset));
+		path.attributes[5] = sqrt(path.attributes[5] / (points.size() - offset));
+		path.attributes[6] = sqrt(path.attributes[6] / (points.size() - offset));
+		path.attributes[7] = sqrt(path.attributes[7] / (points.size() - offset));
+
+		// get minute averages
+		for (unsigned int i = minuteStart; i < minuteEnd; ++i) {
+			path.attributes[8] += points[i].heading;
+			path.attributes[9] += points[i].speed;
+			path.attributes[10] += points[i].ax;
+			path.attributes[11] += points[i].ay;
+		}
+		path.attributes[8] /= offset;
+		path.attributes[9] /= offset;
+		path.attributes[10] /= offset;
+		path.attributes[11] /= offset;
+
+		// get minute standard deviations
+		for (unsigned int i = minuteStart; i < minuteEnd; ++i) {
+			path.attributes[12] += pow((path.attributes[0] - points[i].heading), 2);
+			path.attributes[13] += pow((path.attributes[1] - points[i].speed), 2);
+			path.attributes[14] += pow((path.attributes[2] - points[i].ax), 2);
+			path.attributes[15] += pow((path.attributes[3] - points[i].ay), 2);
+		}
+		path.attributes[12] = sqrt(path.attributes[4] / offset);
+		path.attributes[13] = sqrt(path.attributes[5] / offset);
+		path.attributes[14] = sqrt(path.attributes[6] / offset);
+		path.attributes[15] = sqrt(path.attributes[7] / offset);
 	}
-	path.stdHeading = sqrt(path.stdHeading / points.size());
-	path.stdSpeed = sqrt(path.stdSpeed / (points.size() / 2));
-	path.stdAccx = sqrt(path.stdAccx / (points.size() / 2));
-	path.stdAccy = sqrt(path.stdAccy / (points.size() / 2));
+	catch (exception e) {
+		cerr << endl << e.what() << points.size() << endl << mainStart << endl << mainEnd << endl << minuteStart << endl << minuteEnd << endl;
+		keep_window_open();
+	}
 }
 
 //----------------------------------------------------------------
@@ -116,26 +172,33 @@ double match(const double &q1, const double &q2) {
 		return abs(q2 / q1);
 }
 
+// sum all elements in a vector
+template<class T>
+T sum(const vector<T> &set) {
+	if (set.size() == 0)
+		return *new T{};
+	else if(set.size() == 1)
+		return set[0];
+	else {
+		T tot = set[0];
+		for (unsigned int i = 1; i < set.size(); i++)
+			tot += set[i];
+		return tot;
+	}
+}
+
 // Find percentage match between the two paths (additive over characteristics)
-double pathMatch(const Path &pathA, const Path &pathB,
-	const float &aHW, const float &aSW, const float &aXW, const float &aYW,
-	const float &sHW, const float &sSW, const float &sXW, const float &sYW) {
-	return (aHW * match(pathA.avgHeading, pathB.avgHeading) +
-		aSW * match(pathA.avgSpeed, pathB.avgSpeed) +
-		aXW * match(pathA.avgAccx, pathB.avgAccx) +
-		aYW * match(pathA.avgAccy, pathB.avgAccy) +
-		sHW * match(pathA.stdHeading, pathB.stdHeading) +
-		sSW * match(pathA.stdSpeed, pathB.stdSpeed) +
-		sXW * match(pathA.stdAccx, pathB.stdAccx) +
-		sYW * match(pathA.stdAccy, pathB.stdAccy)) /
-		(aHW + aSW + aXW + aYW + sHW + sSW + sXW + sYW);
+double pathMatch(const Path &pathA, const Path &pathB, const vector<float> &weights) {
+	double wSum = 0;
+	for (unsigned int i = 0; i < weights.size(); i++)
+		wSum += weights[i] * match(pathA.attributes[i], pathB.attributes[i]);
+
+	return wSum /sum(weights);
 }
 
 // Find percentage mismatch between two paths (for hungarian minimization
-double pathMisMatch(const Path &pathA, const Path &pathB,
-	const float &aHW, const float &aSW, const float &aXW, const float &aYW,
-	const float &sHW, const float &sSW, const float &sXW, const float &sYW) {
-	return (1 - pathMatch(pathA, pathB, aHW, aSW, aXW, aYW, sHW, sSW, sXW, sYW));
+double pathMisMatch(const Path &pathA, const Path &pathB, const vector<float> &weights) {
+	return (1 - pathMatch(pathA, pathB, weights));
 }
 
 //----------------------------------------------------------------
