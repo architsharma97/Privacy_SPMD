@@ -3,7 +3,6 @@ __author__='Reza'
 #Argument 1: Number of path segments
 #Argument 2: Directory where the path segments are stored
 #Argument 3: Directory where the new data will be written
-###-Not Needed-->Argument 4: Time in seconds after which every path segment will be broken
 
 import sys
 from random import randint
