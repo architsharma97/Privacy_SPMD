@@ -112,6 +112,31 @@ def main():
     print 'False joins: '+str(false_joins)
     print 'Not joined: '+str(not_joined)
     print 'Success rate: '+str(100.0-(float(false_joins)/len(points))*100)+'%'
+    
+    #Reconstructing segments from points:
+    all_segments=[]
+    checked_points=[]
+    
+    for i in points:
+        
+        if points.index(i) in checked_points:
+            next
+            
+        else:
+            new_segment=[]
+            new_segment=[points.index(i)]
+            checked_points.append(points.index(i))
+            j=points.index(i)
+            
+            while len(points[j].next) != 0:
+                new_segment.append(points[j].next)
+                cheked_points.append(points[j].next)
+                newpoint=points[j].next
+                j=newpoint
+        
+        all_segments.append(new_segment)
+    
+    print "Number of segments found: "+str(len(all_segments))
 
 if __name__ == '__main__':
     main()
